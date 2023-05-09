@@ -13,7 +13,6 @@ app.use(jsonParser);
 app.use('/', routeTest);
 app.use('/ratings', routeTest);
 
-
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',

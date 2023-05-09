@@ -33,5 +33,4 @@ const DJ = mongoose.model('DJ', djSchema);
 // newDJ.save()
 //   .then(() => console.log('SAVED THE DJ'))
 //   .catch((err) => console.log(err));
-
 module.exports = { DJ }
