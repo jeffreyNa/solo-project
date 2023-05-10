@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 function App() {
-  return {
-    <div className="App">
-    </div>
-  };
+  return (
+    <>
+      <h1>RateMyDJ</h1>
+    </>
+  )
 }
 
 export default App;
