@@ -31,7 +31,7 @@ ratingController.postRating = async (req, res, next) => {
   console.log(req.body);
   const { name, rating, description } = req.body;
   try {
-    const DJinDB = await models.findOne({ name: name });
+    const DJinDB = await DJ.findOne({ name: name });
     console.log('Does it exist? ', JSON.stringify(DJinDB));
     if (DJinDB) {
       DJinDB.rating.push(rating);
