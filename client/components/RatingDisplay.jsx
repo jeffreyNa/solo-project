@@ -46,15 +46,15 @@ function RatingDisplay() {
 
       {ratingData &&
         <div>
-          <h2>{ratingData.name}</h2>
-          <p>Average Rating: {ratingData.avgRating.toFixed(2)}</p>
+          <h2>{ratingData.rating.name}</h2>
+          <p>Average Rating: {ratingData.avgRating.toFixed(2)} from {ratingData.ratingCount} users</p>
           {ratingData && ratingData.rating.rating.map((rating, index) => (
             <div key={index}>
               <p>Rating: {rating}</p>
               <p>{ratingData.rating.description[index]}</p>
             </div>
           ))}
-          <UserReview djName={ratingData.name} handleClick={handleClick}/>
+          <UserReview djName={ratingData.rating.name} handleClick={handleClick}/>
         </div>
       }
     </div>
