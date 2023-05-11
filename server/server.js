@@ -2,8 +2,12 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
 const app = express();
 const PORT = 3000;
+
+app.use(cors()); // Need this for my frontend bc I get a CORS policy violation
 
 const routeTest = require('./routes/ratings.js');
 const jsonParser = bodyParser.json();

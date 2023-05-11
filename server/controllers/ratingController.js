@@ -35,6 +35,7 @@ ratingController.postRating = async (req, res, next) => {
     console.log('Does it exist? ', JSON.stringify(DJinDB));
     if (DJinDB) {
       DJinDB.rating.push(rating);
+      // should call a function to calculate rating 
       DJinDB.description.push(description);
       await DJinDB.save();
     } else {
