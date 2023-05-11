@@ -6,7 +6,7 @@ const ratingController = require('../controllers/ratingController');
 router.get('/ratings/:name', ratingController.getRatings, (req, res) => {
   console.log('RECEIVED GET REQUEST TO RATINGS');
   console.log('res.locals.rating: ', res.locals.rating);
-  return res.status(200).send(res.locals.rating);
+  return res.status(200).json({ rating: res.locals.rating, ratingCount: res.locals.ratingCount, avgRating: res.locals.avgRating });
 });
 
 router.post('/ratings', ratingController.postRating, (req, res) => {

@@ -11,7 +11,16 @@ ratingController.getRatings = async (req, res, next) => {
     const rating = await DJ.findOne({ name: name });
     if (rating) {
       console.log("DJ found: ", rating);
+      let avgRating = 0;
+      for (let i = 0; i < rating.rating.length; i++) {
+        avgRating += rating.rating[i];
+      }
+      avgRating = avgRating / rating.rating.length;
+      console.log('avgRating: ', avgRating);
+      console.log('how many ratings? ', rating.rating.length);
       res.locals.rating = rating;
+      res.locals.ratingCount = rating.rating.length;
+      res.locals.avgRating = avgRating;
       return next();
     } else {
       return res.status(404).send('Not found');
