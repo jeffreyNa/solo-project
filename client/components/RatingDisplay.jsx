@@ -6,7 +6,9 @@ import UserReview from './UserReview.jsx';
 function RatingDisplay() {
   const [ratingData, setRatingData] = useState(null);
   const [inputDJ, setInputDJ] = useState('');
-  const [notFound, setnotFound] = useState('false');
+  const [notFound, setnotFound] = useState(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+
   console.log('AM I IN FRONTEND?');
 
   async function handleClick() {
@@ -17,11 +19,11 @@ function RatingDisplay() {
     try {
       console.log('Am I in this try block?');
       const response = await axios.get(`http://localhost:3000/ratings/${inputDJ}`);
-      console.log(response.data);
-      if (response) {
-        setnotFound(false);
+      console.log('WHAT IS MY STATUS? ', response.status);
+      if (response.data.rating) {
         setRatingData(response.data);
       } else {
+        setShowReviewForm(true);
         setnotFound(true);
       }
     } catch (err) {
@@ -31,30 +33,32 @@ function RatingDisplay() {
   }
 
   function handleInputChange(event) {
-    console.log(event);
+    console.log('Changing: ', event);
     setInputDJ(event.target.value)
   }
 
   return (
     <div>
-      <form>
+      <form id="userForm">
         <input type="text" value={inputDJ} id="djSearch" onChange={handleInputChange} placeholder='Search up DJ' />
-        <button type='submit' onClick={handleClick}>Search</button>
+        <button type='submit' id="djSearchSubmit" onClick={handleClick}>Search</button>
       </form>
 
-      {notFound === true && <p>DJ Not Found</p>}
+      {notFound && 
+        <p>DJ Not Found</p>
+      }
 
       {ratingData &&
-        <div>
+        <div id="reviews">
           <h2>{ratingData.rating.name}</h2>
-          <p>Average Rating: {ratingData.avgRating.toFixed(2)} from {ratingData.ratingCount} users</p>
+          <h3>Overall Rating: {ratingData.avgRating.toFixed(2)} from {ratingData.ratingCount} users</h3>
+          <UserReview djName={ratingData.rating.name} handleClick={handleClick}/>
           {ratingData && ratingData.rating.rating.map((rating, index) => (
-            <div key={index}>
+            <div id="userReview" key={index}>
               <p>Rating: {rating}</p>
               <p>{ratingData.rating.description[index]}</p>
             </div>
           ))}
-          <UserReview djName={ratingData.rating.name} handleClick={handleClick}/>
         </div>
       }
     </div>

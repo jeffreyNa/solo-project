@@ -1,0 +1,54 @@
+body {
+  margin: 0px;
+  height: 100vw;
+  background: rgb(255,115,0);
+  background: radial-gradient(circle, rgba(255,115,0,1) 0%, rgba(255,73,57,1) 15%, rgba(238,174,202,1) 49%, rgba(14,31,60,1) 89%, rgba(2,14,31,1) 100%);
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,h2, h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#userForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#userReview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#reviewForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#reviews {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center; 
+}
+
+#userReview {
+  width: 300px;
+  height: 100px;
+  /* border: 1px solid black; */
+  /* border-radius: 2px; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center; 
+}

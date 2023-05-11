@@ -23,11 +23,11 @@ const djSchema = new Schema({
 // creates a model for the 'dj' collection that will be exported
 const DJ = mongoose.model('DJ', djSchema);
 
-// // create some mock data for testing
+// create some mock data for testing
 // const newDJ = new DJ({
-//   name: 'Porter Robinson',
+//   name: 'DJ Diesel',
 //   rating: '5',
-//   description: '【=◈︿◈=】',
+//   description: 'What can he not do?',
 // });
 
 // newDJ.save()

@@ -23,10 +23,10 @@ ratingController.getRatings = async (req, res, next) => {
       res.locals.avgRating = avgRating;
       return next();
     } else {
-      return res.status(404).send('Not found');
+      return res.status(404).json({ err: 'DJ not found' });
     }
   } catch (err) {
-    console.log('SOMEHOW ENDED UP HERE', err);
+    console.log('SOMEHOW ENDED UP HERE');
     return next({
       log: 'Error in ratingController.getRatings',
       status: 400,

@@ -16,6 +16,7 @@ function ReviewForm(props) {
         description: [review],
       });
       console.log(response);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -31,12 +32,13 @@ function ReviewForm(props) {
   }
 
   return (
-    <>
-      <input value={rating} type="number" name="rating" id="rating" placeholder="Rate out of 5" onChange={handleRatingChange}/> 
-      
-      <textarea value={review} onChange={handleReviewChange} name="review" id="review" placeholder="Type review here" />
+    <div id="reviewForm">
+      <br />
+      <input value={rating} type="number" name="rating" id="formRating" placeholder="Rate out of 5" onChange={handleRatingChange}/> 
+      <br />
+      <textarea value={review} onChange={handleReviewChange} name="formReview" id="review" placeholder="Type review here" />
       <button type='submit' onClick={handleSubmit}>Submit</button>
-    </>
+    </div>
   )
 }
 
