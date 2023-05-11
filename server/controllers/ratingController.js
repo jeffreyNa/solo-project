@@ -28,15 +28,22 @@ ratingController.getRatings = async (req, res, next) => {
 
 ratingController.postRating = async (req, res, next) => {
   console.log('ENTERING postRating');
-  console.log(req.body);
   const { name, rating, description } = req.body;
+  console.log('name ', name);
+  console.log('rating ', rating);
+  console.log('description ', description);
   try {
     const DJinDB = await DJ.findOne({ name: name });
     console.log('Does it exist? ', JSON.stringify(DJinDB));
     if (DJinDB) {
-      DJinDB.rating.push(rating);
+      console.log('IM IN HERE');
+      console.log(DJinDB);
+      DJinDB.rating = DJinDB.rating.concat(rating[0]);
+    //   DJinDB.rating.concat(rating[0]);
       // should call a function to calculate rating 
-      DJinDB.description.push(description);
+      DJinDB.description = DJinDB.description.concat(description[0]);
+    //   DJinDB.description.push(description[0]);
+      console.log('Did it work?');
       await DJinDB.save();
     } else {
       const newDJ = new DJ({

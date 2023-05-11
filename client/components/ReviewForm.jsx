@@ -13,7 +13,7 @@ function ReviewForm(props) {
       const response = await axios.post(`http://localhost:3000/ratings`, {
         name: props.djName,
         rating: [rating],
-        description: [review]
+        description: [review],
       });
       console.log(response);
     } catch (err) {
